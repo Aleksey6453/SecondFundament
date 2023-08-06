@@ -1,0 +1,18 @@
+.input{
+    padding: 10px 15px;
+    width: 30%;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 3px solid lime;
+    color: lime;
+    background-color: black;
+  }
+
+input::placeholder{
+color: white;
+font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+}
