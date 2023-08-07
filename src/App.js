@@ -6,6 +6,9 @@ import {Test} from './components/test/Test'
 import {Form} from './components/form/Form'
 
 function App() {
+  // const titleInputRef = React.useRef()
+  const [title, setTitle] = React.useState('')
+  const [body, setBody] = React.useState('')
   const [posts, setPosts] = React.useState([
     {id: 1, title: 'Title ', body: 'body text'},
     {id: 2, title: 'Title ', body: 'body text'},
@@ -13,7 +16,12 @@ function App() {
   ])
   return (
     <div className="App globalWrap">
-      <Form />
+      <Form title={title}
+            setTitle={setTitle}
+            body={body}
+            setBody={setBody}
+            // titleInputRef={titleInputRef}
+            />
       
       {
         posts.map(post => 
