@@ -4,35 +4,33 @@ import {Counter} from './components/counter/Counter'
 import {Post} from './components/post/Post'
 import {Test} from './components/test/Test'
 import {Form} from './components/form/Form'
+import { PostList } from './components/postList/PostList';
 
 function App() {
   // const titleInputRef = React.useRef()
-  const [title, setTitle] = React.useState('')
-  const [body, setBody] = React.useState('')
+  // const [title, setTitle] = React.useState('')
+  // const [body, setBody] = React.useState('')
+
   const [posts, setPosts] = React.useState([
     {id: 1, title: 'Title ', body: 'body text'},
     {id: 2, title: 'Title ', body: 'body text'},
-    {id: 3, title: 'Title ', body: 'body text'},
+    {id: 3, title: 'Title ', body: 'body text'}
   ])
+  const [post, setPost] = React.useState({title:'', body:''})
   return (
     <div className="App globalWrap">
-      <Form title={title}
-            setTitle={setTitle}
-            body={body}
-            setBody={setBody}
+      <Form title={post.title}
+            setTitle={post.setTitle}
+            body={post.body}
+            setBody={post.setBody}
+            setPosts={setPosts}
+            posts={posts}
+            post={post}
+            setPost={setPost}
             // titleInputRef={titleInputRef}
             />
-      
-      {
-        posts.map(post => 
-          <Post post={post} 
-                key={post.id} 
-                title={post.title} 
-                body={post.body} 
-                id={post.id} 
-                />
-        )
-      }
+      <PostList posts={posts} Post={Post} />
+     
        
        
     </div>
