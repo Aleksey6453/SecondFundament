@@ -16,17 +16,30 @@ function App() {
     {id: 2, title: 'Title ', body: 'body text'},
     {id: 3, title: 'Title ', body: 'body text'}
   ])
-  const [post, setPost] = React.useState({title: '', body: ''})
+
+  const removePost = (post) => {
+    setPosts(posts.filter(p => p.id !== post.id))
+  }
+
+  const createPost = (newPost) => {
+    setPosts([...posts, newPost])
+  }
+
   return (
     <div className="App globalWrap">
       <Form 
-            setPosts={setPosts}
-            posts={posts}
-            post={post}
-            setPost={setPost}
-            // titleInputRef={titleInputRef}
-            />
-      <PostList posts={posts} Post={Post} />
+          setPosts={setPosts}
+          posts={posts}
+          create={createPost}
+          // titleInputRef={titleInputRef}
+          />
+
+      {
+        posts.length 
+          ?  <PostList remove={removePost} posts={posts} Post={Post} /> 
+          : <h1>There is empty!</h1>
+      }      
+      
      
        
        

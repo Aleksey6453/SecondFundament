@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './PostList.module.css'
 
-const PostList = ({posts, Post}) => {
+const PostList = ({posts, Post, remove}) => {
   return (
     <div className={styles.postList}>
        <h1>List of Posts</h1>
@@ -12,6 +12,7 @@ const PostList = ({posts, Post}) => {
                 title={post.title} 
                 body={post.body} 
                 id={post.id}
+                remove={remove}
                 number={index + 1} 
                 />
         )
