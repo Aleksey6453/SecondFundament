@@ -16,13 +16,10 @@ function App() {
     {id: 2, title: 'Title ', body: 'body text'},
     {id: 3, title: 'Title ', body: 'body text'}
   ])
-  const [post, setPost] = React.useState({title:'', body:''})
+  const [post, setPost] = React.useState({title: '', body: ''})
   return (
     <div className="App globalWrap">
-      <Form title={post.title}
-            setTitle={post.setTitle}
-            body={post.body}
-            setBody={post.setBody}
+      <Form 
             setPosts={setPosts}
             posts={posts}
             post={post}

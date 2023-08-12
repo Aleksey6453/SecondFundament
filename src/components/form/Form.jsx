@@ -3,8 +3,10 @@ import MyButton from '../UI/button/MyButton'
 import MyInput from '../UI/input/MyInput'
 import styles from './Form.module.css'
 
-const Form = ({title, setTitle, body, setBody, titleInputRef, setPosts, posts, post, setPost}) => {
+const Form = ({titleInputRef, setPosts, posts}) => {
     // const titleInputRef = React.useRef()
+    const [post, setPost] = React.useState({title: '', body:''})
+
     const addNewPost = (e) => {
         e.preventDefault()
       //   const newPost = {
@@ -24,13 +26,13 @@ const Form = ({title, setTitle, body, setBody, titleInputRef, setPosts, posts, p
        <MyInput type="text" 
                 placeholder='New title' 
                 onChange={e => setPost({...post, title: e.target.value})}
-                value={title}
-                ref={titleInputRef}
+                value={post.title}
+               //  ref={titleInputRef}
                 />
        <MyInput type="text" 
                 placeholder='New body'
                 onChange={e => setPost({...post, body: e.target.value})}
-                value={body}
+                value={post.body}
                  />
        <MyButton onClick={addNewPost}>Add post!</MyButton>
     </form>
