@@ -1,9 +1,10 @@
-.postList{
+.select{
     width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     box-sizing: border-box;
     padding: 20px 0;
+  
 }

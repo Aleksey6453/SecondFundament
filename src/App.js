@@ -4,7 +4,8 @@ import {Counter} from './components/counter/Counter'
 import {Post} from './components/post/Post'
 import {Test} from './components/test/Test'
 import {Form} from './components/form/Form'
-import { PostList } from './components/postList/PostList';
+import { PostList } from './components/postList/PostList'
+import {MySelect} from './components/UI/select/MySelect'
 
 function App() {
   // const titleInputRef = React.useRef()
@@ -33,7 +34,7 @@ function App() {
           create={createPost}
           // titleInputRef={titleInputRef}
           />
-
+      <MySelect />
       {
         posts.length 
           ?  <PostList remove={removePost} posts={posts} Post={Post} /> 
