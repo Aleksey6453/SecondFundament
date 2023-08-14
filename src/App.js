@@ -9,13 +9,18 @@ import {MySelect} from './components/UI/select/MySelect'
 
 function App() {
   // const titleInputRef = React.useRef()
-  // const [title, setTitle] = React.useState('')
-  // const [body, setBody] = React.useState('')
+  const [selectedSort, setSelectedSort] = React.useState('')
+
+  const sortPosts = (sort) => {
+    setSelectedSort(sort);
+    console.log(sort)
+    setPosts([...posts].sort((a,b)=>a[sort].localeCompare(b[sort])))
+  }
 
   const [posts, setPosts] = React.useState([
-    {id: 1, title: 'Title ', body: 'body text'},
-    {id: 2, title: 'Title ', body: 'body text'},
-    {id: 3, title: 'Title ', body: 'body text'}
+    {id: 1, title: 'TT ', body: 'body text'},
+    {id: 2, title: 'ZZ ', body: 'body text'},
+    {id: 3, title: 'AA ', body: 'body text'}
   ])
 
   const removePost = (post) => {
@@ -34,7 +39,15 @@ function App() {
           create={createPost}
           // titleInputRef={titleInputRef}
           />
-      <MySelect />
+      <MySelect 
+        value={selectedSort}
+        onChange={sortPosts}
+        defaultValue='sort by...'
+        options={[
+          {value:'title', name:'by title'},
+          {value:'body', name:'by body'}
+        ]}
+      />
       {
         posts.length 
           ?  <PostList remove={removePost} posts={posts} Post={Post} /> 

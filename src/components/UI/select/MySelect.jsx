@@ -1,12 +1,19 @@
 import React from 'react'
 import styles from './MySelect.module.css'
 
-const MySelect = () => {
+const MySelect = ({options, defaultValue, value, onChange}) => {
+  console.log(value)
   return (
     <div className={styles.select}>
-       <select>
-        <option value="value 1">By title</option>
-        <option value="value 2">By description</option>
+       <select value={value} onChange={e => onChange(e.target.value)}>
+          <option disabled value=''> {defaultValue} </option>
+          {
+            options.map(option =>
+              <option key={option.value} value={option.value}>
+                {option.name}
+              </option>
+            )
+          }
        </select>
     </div>
   )
