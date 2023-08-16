@@ -14,4 +14,4 @@ const Search = ({searchQuery, setSearchQuery}) => {
   )
 }
 
-export default Search
+export {Search}

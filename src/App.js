@@ -8,6 +8,7 @@ import { PostList } from './components/postList/PostList'
 import {MySelect} from './components/UI/select/MySelect'
 import Search from './components/search/Search';
 import MyInput from './components/UI/input/MyInput';
+import { PostFilter } from './components/postFilter/PostFilter';
 
 function App() {
   
@@ -52,7 +53,18 @@ function App() {
           posts={posts}
           create={createPost}
           />
-      <div className="gorizont">  
+      <PostFilter 
+          value={selectedSort}
+          onChange={sortPosts}
+          defaultValue='sort by...'
+          options={[
+            {value:'title', name:'by title'},
+            {value:'body', name:'by body'}
+          ]}  
+          searchQuery={searchQuery} 
+          setSearchQuery={setSearchQuery}
+      />    
+      {/* <div className="gorizont">  
         <MySelect 
           value={selectedSort}
           onChange={sortPosts}
@@ -64,10 +76,10 @@ function App() {
         />
         
         <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>  
-      </div>    
+      </div>     */}
       
       {
-        posts.length 
+        sortedAndSearchedPost.length 
           ?  <PostList remove={removePost} posts={sortedAndSearchedPost} Post={Post} /> 
           : <h1>There is empty!</h1>
       }      
