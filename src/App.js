@@ -18,25 +18,26 @@ function App() {
     {id: 3, title: 'AA ', body: 'body text'}
   ])
 
-  const [searchQuery, setSearchQuery] = React.useState('')
+  // const [searchQuery, setSearchQuery] = React.useState('')
   const [selectedSort, setSelectedSort] = React.useState('')
+  const [filter, setFilter] = React.useState({sort:'', query:''})
 
   const sortedPosts = React.useMemo(()=>{
     console.log('func happened SortedPosts')
-    if(selectedSort){
-      return [...posts].sort((a,b)=>a[selectedSort].localeCompare(b[selectedSort]))
+    if(filter.sort){
+      return [...posts].sort((a,b)=>a[filter.sort].localeCompare(b[filter.sort]))
     }
     return posts
-  }, [selectedSort, posts])
+  }, [filter.sort, posts])
 
   const sortedAndSearchedPost = React.useMemo(()=>{
-    return sortedPosts.filter(post => post.title.toLowerCase().includes(searchQuery))
-  }, [searchQuery, sortedPosts])
+    return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.query))
+  }, [filter.query, sortedPosts])
 
-  const sortPosts = (sort) => {
-    setSelectedSort(sort);
-    console.log(sort)
-  }
+  // const sortPosts = (sort) => {
+  //   setSelectedSort(sort);
+  //   console.log(sort)
+  // }
 
   const removePost = (post) => {
     setPosts(posts.filter(p => p.id !== post.id))
@@ -54,29 +55,10 @@ function App() {
           create={createPost}
           />
       <PostFilter 
-          value={selectedSort}
-          onChange={sortPosts}
-          defaultValue='sort by...'
-          options={[
-            {value:'title', name:'by title'},
-            {value:'body', name:'by body'}
-          ]}  
-          searchQuery={searchQuery} 
-          setSearchQuery={setSearchQuery}
+          filter={filter}
+          setFilter={setFilter}
+          // selectedSort={selectedSort}
       />    
-      {/* <div className="gorizont">  
-        <MySelect 
-          value={selectedSort}
-          onChange={sortPosts}
-          defaultValue='sort by...'
-          options={[
-            {value:'title', name:'by title'},
-            {value:'body', name:'by body'}
-          ]}
-        />
-        
-        <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>  
-      </div>     */}
       
       {
         sortedAndSearchedPost.length 

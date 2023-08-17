@@ -3,13 +3,13 @@ import styles from './PostFilter.module.css'
 import { MySelect } from '../UI/select/MySelect'
 import { Search } from '../search/Search'
 
-const PostFilter = ({selectedSort, sortPosts, searchQuery, setSearchQuery, onChange}) => {
+const PostFilter = ({filter, setFilter, selectedSort}) => {
   return (
     
     <div className='gorizont'>  
         <MySelect 
-            value={selectedSort}
-            onChange={onChange}
+            value={filter.sort}
+            onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
             defaultValue='sort by...'
             options={[
                 {value:'title', name:'by title'},
@@ -17,7 +17,10 @@ const PostFilter = ({selectedSort, sortPosts, searchQuery, setSearchQuery, onCha
             ]}
         />
         
-        <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>  
+        <Search 
+                filter={filter}
+                setFilter={setFilter}
+        />  
     </div> 
 
   )
