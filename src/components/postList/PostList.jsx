@@ -2,6 +2,10 @@ import React from 'react'
 import styles from './PostList.module.css'
 
 const PostList = ({posts, Post, remove}) => {
+  if(!posts.length){
+    return <h1>There is empty!</h1>
+  }
+
   return (
     <div className={styles.postList}>
        <h1>List of Posts</h1>

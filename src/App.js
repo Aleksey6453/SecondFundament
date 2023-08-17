@@ -9,6 +9,7 @@ import {MySelect} from './components/UI/select/MySelect'
 import Search from './components/search/Search';
 import MyInput from './components/UI/input/MyInput';
 import { PostFilter } from './components/postFilter/PostFilter';
+import { MyModal } from './components/UI/modal/MyModal';
 
 function App() {
   
@@ -49,22 +50,26 @@ function App() {
 
   return (
     <div className="App globalWrap">
-      <Form 
-          setPosts={setPosts}
-          posts={posts}
-          create={createPost}
+      <MyModal>
+          <Form 
+            setPosts={setPosts}
+            posts={posts}
+            create={createPost}
           />
+      </MyModal>
+      
       <PostFilter 
           filter={filter}
           setFilter={setFilter}
           // selectedSort={selectedSort}
-      />    
+      /> 
+      <PostList remove={removePost} posts={sortedAndSearchedPost} Post={Post} />   
       
-      {
+      {/* {
         sortedAndSearchedPost.length 
           ?  <PostList remove={removePost} posts={sortedAndSearchedPost} Post={Post} /> 
           : <h1>There is empty!</h1>
-      }      
+      }       */}
       
      
        
