@@ -22,6 +22,7 @@ function App() {
   // const [searchQuery, setSearchQuery] = React.useState('')
   const [selectedSort, setSelectedSort] = React.useState('')
   const [filter, setFilter] = React.useState({sort:'', query:''})
+  // const [visible, setVisible] = React.useState()
 
   const sortedPosts = React.useMemo(()=>{
     console.log('func happened SortedPosts')
@@ -50,7 +51,7 @@ function App() {
 
   return (
     <div className="App globalWrap">
-      <MyModal>
+      <MyModal visible={true}>
           <Form 
             setPosts={setPosts}
             posts={posts}
