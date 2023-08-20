@@ -10,6 +10,7 @@ import Search from './components/search/Search';
 import MyInput from './components/UI/input/MyInput';
 import { PostFilter } from './components/postFilter/PostFilter';
 import { MyModal } from './components/UI/modal/MyModal';
+import MyButton from './components/UI/button/MyButton';
 
 function App() {
   
@@ -22,7 +23,8 @@ function App() {
   // const [searchQuery, setSearchQuery] = React.useState('')
   const [selectedSort, setSelectedSort] = React.useState('')
   const [filter, setFilter] = React.useState({sort:'', query:''})
-  // const [visible, setVisible] = React.useState()
+  const [modal, setModal] = React.useState(false)
+  
 
   const sortedPosts = React.useMemo(()=>{
     console.log('func happened SortedPosts')
@@ -47,11 +49,16 @@ function App() {
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost])
+    setModal(false)
   }
+
 
   return (
     <div className="App globalWrap">
-      <MyModal visible={true}>
+      <MyButton onClick={()=>setModal(true)}>
+          Add post
+      </MyButton>
+      <MyModal visible={modal} setVisible={setModal}>
           <Form 
             setPosts={setPosts}
             posts={posts}
@@ -72,9 +79,6 @@ function App() {
           : <h1>There is empty!</h1>
       }       */}
       
-     
-       
-       
     </div>
   );
 }
