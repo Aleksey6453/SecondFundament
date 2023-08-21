@@ -8,7 +8,6 @@ import { PostList } from './components/postList/PostList'
 import {MySelect} from './components/UI/select/MySelect'
 import Search from './components/search/Search';
 import MyInput from './components/UI/input/MyInput';
-import { PostFilter } from './components/postFilter/PostFilter';
 import { MyModal } from './components/UI/modal/MyModal';
 import MyButton from './components/UI/button/MyButton';
 
@@ -65,12 +64,7 @@ function App() {
             create={createPost}
           />
       </MyModal>
-      
-      <PostFilter 
-          filter={filter}
-          setFilter={setFilter}
-          // selectedSort={selectedSort}
-      /> 
+     
       <PostList remove={removePost} posts={sortedAndSearchedPost} Post={Post} />   
       
       {/* {
