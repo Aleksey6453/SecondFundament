@@ -21,13 +21,10 @@ function App() {
   // const [title, setTitle] = React.useState('')
   // const [body, setBody] = React.useState('')
 
-  // const addNewPost = () => {
-
-  // }
 
   return (
     <div className="App globalWrap">
-      <Form />
+      <Form posts={posts} setPosts={setPosts} />
       <PostList posts={posts} title='List of posts' />
     </div>
   );
