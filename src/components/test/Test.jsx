@@ -1,14 +1,19 @@
 import React from 'react'
 
-const Test = ({title, body, id}) => {
+const Test = () => {
+
+  const [count, setCount] = React.useState(0)
+ 
+ 
   return (
     <div>
-      <h1>
-        {title} {id}
-      </h1>
-      <h2>
-        {body} {id}
-      </h2>
+     <h1>{count}</h1>
+     <button onClick={(prev) => {setCount(count + 1)}}>
+      +
+     </button>
+     <button onClick={(prev) => {setCount(count - 1)}}>
+      -
+     </button>
     </div>
   )
 }

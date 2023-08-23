@@ -14,65 +14,21 @@ import MyButton from './components/UI/button/MyButton';
 function App() {
   
   const [posts, setPosts] = React.useState([
-    {id: 1, title: 'TT ', body: 'body text'},
-    {id: 2, title: 'ZZ ', body: 'body text'},
-    {id: 3, title: 'AA ', body: 'body text'}
+    {id:1, title:'Post', body: 'Text about post'},
+    {id:2, title:'Post', body: 'Text about post'},
+    {id:3, title:'Post', body: 'Text about post'},
   ])
+  // const [title, setTitle] = React.useState('')
+  // const [body, setBody] = React.useState('')
 
-  // const [searchQuery, setSearchQuery] = React.useState('')
-  const [selectedSort, setSelectedSort] = React.useState('')
-  const [filter, setFilter] = React.useState({sort:'', query:''})
-  const [modal, setModal] = React.useState(false)
-  
+  // const addNewPost = () => {
 
-  const sortedPosts = React.useMemo(()=>{
-    console.log('func happened SortedPosts')
-    if(filter.sort){
-      return [...posts].sort((a,b)=>a[filter.sort].localeCompare(b[filter.sort]))
-    }
-    return posts
-  }, [filter.sort, posts])
-
-  const sortedAndSearchedPost = React.useMemo(()=>{
-    return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.query))
-  }, [filter.query, sortedPosts])
-
-  // const sortPosts = (sort) => {
-  //   setSelectedSort(sort);
-  //   console.log(sort)
   // }
-
-  const removePost = (post) => {
-    setPosts(posts.filter(p => p.id !== post.id))
-  }
-
-  const createPost = (newPost) => {
-    setPosts([...posts, newPost])
-    setModal(false)
-  }
-
 
   return (
     <div className="App globalWrap">
-      <MyButton onClick={()=>setModal(true)}>
-          Add post
-      </MyButton>
-      <MyModal visible={modal} setVisible={setModal}>
-          <Form 
-            setPosts={setPosts}
-            posts={posts}
-            create={createPost}
-          />
-      </MyModal>
-     
-      <PostList remove={removePost} posts={sortedAndSearchedPost} Post={Post} />   
-      
-      {/* {
-        sortedAndSearchedPost.length 
-          ?  <PostList remove={removePost} posts={sortedAndSearchedPost} Post={Post} /> 
-          : <h1>There is empty!</h1>
-      }       */}
-      
+      <Form />
+      <PostList posts={posts} title='List of posts' />
     </div>
   );
 }
