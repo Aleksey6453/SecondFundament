@@ -18,14 +18,16 @@ function App() {
     {id:2, title:'Post', body: 'Text about post'},
     {id:3, title:'Post', body: 'Text about post'},
   ])
-  // const [title, setTitle] = React.useState('')
-  // const [body, setBody] = React.useState('')
 
+  // const removePost = (post) => {
+  //     setPosts(posts.filter(p => p.id !== post.id))
+  //   }
+ 
 
   return (
     <div className="App globalWrap">
       <Form posts={posts} setPosts={setPosts} />
-      <PostList posts={posts} title='List of posts' />
+      <PostList posts={posts} title='List of posts' setPosts={setPosts}/>
     </div>
   );
 }

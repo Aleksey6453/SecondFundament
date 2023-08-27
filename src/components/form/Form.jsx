@@ -4,32 +4,36 @@ import MyInput from '../UI/input/MyInput'
 import styles from './Form.module.css'
 
 const Form = ({posts, setPosts}) => {
-  const [title, setTitle] = React.useState('')
-  const [body, setBody] = React.useState('')
+  // const [title, setTitle] = React.useState('')
+  // const [body, setBody] = React.useState('')
+  const [post, setPost] = React.useState({title:'', body:''})
 
   const addNewPost = (e) => {
     e.preventDefault()
     const newPost = {
       id: Date.now(),
-      title, 
-      body
+      title: post.title, 
+      body: post.body
     }
     console.log(newPost)
-    setPosts([...posts, newPost])
-
-    setTitle('')
-    setBody('')
+    if (newPost.title.trim() !== '' && newPost.body.trim() !== ''){
+      setPosts([...posts, newPost])
+      setPost({title:'', body:''})
+    }
   }
+
+ 
+
 
   return (
     <div className={styles.gorizont}>
-       <MyInput value={title} 
-                onChange={e => setTitle(e.target.value)}
+       <MyInput value={post.title} 
+                onChange={e => setPost({...post, title: e.target.value})}
                 placeholder='Add title...' 
                 type='text'
                 />
-       <MyInput value={body}
-                onChange={e => setBody(e.target.value)}
+       <MyInput value={post.body}
+                onChange={e => setPost({...post, body: e.target.value})}
                 placeholder='Add body...' 
                 type='text' 
                 />
