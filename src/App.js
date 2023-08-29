@@ -10,6 +10,7 @@ import Search from './components/search/Search';
 import MyInput from './components/UI/input/MyInput';
 import { MyModal } from './components/UI/modal/MyModal';
 import MyButton from './components/UI/button/MyButton';
+import { Sort } from './components/sort/Sort';
 
 
 function App() {
@@ -20,25 +21,11 @@ function App() {
     {id:3, title:'Post', body: 'Text about post'},
   ])
 
-  const [selectedSort, setSelectedSort] = React.useState('')
-  const sortPosts = (sort) => {
-    setSelectedSort(sort);
-    setPosts([...posts].sort((a,b) => a[sort].localeCompare(b[sort])))
-    console.log(sort)
-  }
-
 
   return (
     <div className="App globalWrap">
       <Form posts={posts} setPosts={setPosts} />
-      <MySelect defaultValue="sort by..."
-                value={selectedSort}
-                onChange={sortPosts}
-                options={[
-                  {value: "title", name: "by title"},
-                  {value: "body", name: "by body"}
-                ]}
-      />
+      <Sort posts={posts} setPosts={setPosts} />
       {
         posts.length
         ?  <PostList posts={posts} title='List of posts' setPosts={setPosts}/>
