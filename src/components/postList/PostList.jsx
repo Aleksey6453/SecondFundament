@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './PostList.module.css'
 import { Post } from '../post/Post'
 
-const PostList = ({posts, post, title, setPosts}) => {
+const PostList = ({posts, title, setPosts}) => {
 
   const deletePost = (postId) => {
     const updatedPost = posts.filter(post => post.id !== postId)

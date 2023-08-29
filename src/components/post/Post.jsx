@@ -4,9 +4,6 @@ import styles from './Post.module.css'
 
 const Post = ({post, number, onDelete}) => {
 
- 
-
-
   return (
     <div className={styles.postCart}>
       <div className={styles.left}>
