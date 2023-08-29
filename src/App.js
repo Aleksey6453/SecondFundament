@@ -6,7 +6,7 @@ import {Test} from './components/test/Test'
 import {Form} from './components/form/Form'
 import { PostList } from './components/postList/PostList'
 import {MySelect} from './components/UI/select/MySelect'
-import Search from './components/search/Search';
+import {Search} from './components/search/Search';
 import MyInput from './components/UI/input/MyInput';
 import { MyModal } from './components/UI/modal/MyModal';
 import MyButton from './components/UI/button/MyButton';
@@ -20,15 +20,37 @@ function App() {
     {id:2, title:'Post', body: 'Text about post'},
     {id:3, title:'Post', body: 'Text about post'},
   ])
+  const [selectedSort, setSelectedSort] = React.useState('')
+  
+  const sortedPosts = React.useMemo(()=>{
+      console.log('get sorteg post havened')
+      if (selectedSort){
+        return [...posts].sort((a,b) => a[selectedSort].localeCompare(b[selectedSort]))
+      }
+      return posts
+  }, [selectedSort, posts])
 
+  const [searchQuery, setSearchQuery] = React.useState('')
+
+  const sortedAndSearchedPost = React.useMemo(()=>{
+      return sortedPosts.filter(post => post.title.toLowerCase().includes(searchQuery.toLowerCase()))
+  }, [searchQuery, sortedPosts])
 
   return (
     <div className="App globalWrap">
+
       <Form posts={posts} setPosts={setPosts} />
-      <Sort posts={posts} setPosts={setPosts} />
+      <div className="gorizont">
+        <Sort posts={posts} 
+              setPosts={setPosts} 
+              selectedSort={selectedSort} 
+              setSelectedSort={setSelectedSort} 
+              />
+        <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+      </div>
       {
-        posts.length
-        ?  <PostList posts={posts} title='List of posts' setPosts={setPosts}/>
+        sortedAndSearchedPost.length
+        ?  <PostList posts={sortedAndSearchedPost} title='List of posts' setPosts={setPosts}/>
         :  <h1>There is empty!</h1>
       }
       

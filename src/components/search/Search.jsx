@@ -1,10 +1,15 @@
 import React from 'react'
+import MyInput from '../UI/input/MyInput'
+import styles from './Search.module.css'
 
-const Search = () => {
+const Search = ({searchQuery, setSearchQuery}) => {
+ 
   return (
-    <div>
-      
-    </div>
+      <MyInput  placeholder='search...'
+                type='text' 
+                value = {searchQuery}
+                onChange = {e => setSearchQuery(e.target.value)}
+                />
   )
 }
 
