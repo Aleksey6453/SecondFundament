@@ -21,41 +21,32 @@ function App() {
     {id:2, title:'Post', body: 'Text about post'},
     {id:3, title:'Post', body: 'Text about post'},
   ])
-  const [selectedSort, setSelectedSort] = React.useState('')
+  // const [selectedSort, setSelectedSort] = React.useState('')
+  // const [searchQuery, setSearchQuery] = React.useState('')
+  const [filter, setFilter] = React.useState({sort: '', query: ''})
   
   const sortedPosts = React.useMemo(()=>{
       console.log('get sorteg post havened')
-      if (selectedSort){
-        return [...posts].sort((a,b) => a[selectedSort].localeCompare(b[selectedSort]))
+      if (filter.sort){
+        return [...posts].sort((a,b) => a[filter.sort].localeCompare(b[filter.sort]))
       }
       return posts
-  }, [selectedSort, posts])
+  }, [filter.sort, posts])
 
-  const [searchQuery, setSearchQuery] = React.useState('')
+ 
 
   const sortedAndSearchedPost = React.useMemo(()=>{
-      return sortedPosts.filter(post => post.title.toLowerCase().includes(searchQuery.toLowerCase()))
-  }, [searchQuery, sortedPosts])
+      return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.query.toLowerCase()))
+  }, [filter.query, sortedPosts])
 
   return (
     <div className="App globalWrap">
 
       <Form posts={posts} setPosts={setPosts} />
-      <PostFilter posts={posts} 
-                  setPosts={setPosts} 
-                  selectedSort={selectedSort} 
-                  setSelectedSort={setSelectedSort} 
-                  searchQuery={searchQuery} 
-                  setSearchQuery={setSearchQuery}
+      <PostFilter filter={filter}
+                  setFilter={setFilter}
                   />
-      {/* <div className="gorizont">
-        <Sort posts={posts} 
-              setPosts={setPosts} 
-              selectedSort={selectedSort} 
-              setSelectedSort={setSelectedSort} 
-              />
-        <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
-      </div> */}
+     
       {
         sortedAndSearchedPost.length
         ?  <PostList posts={sortedAndSearchedPost} title='List of posts' setPosts={setPosts}/>
