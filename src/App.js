@@ -11,6 +11,7 @@ import MyInput from './components/UI/input/MyInput';
 import { MyModal } from './components/UI/modal/MyModal';
 import MyButton from './components/UI/button/MyButton';
 import { Sort } from './components/sort/Sort';
+import PostFilter from './components/postFilter/PostFilter';
 
 
 function App() {
@@ -40,14 +41,21 @@ function App() {
     <div className="App globalWrap">
 
       <Form posts={posts} setPosts={setPosts} />
-      <div className="gorizont">
+      <PostFilter posts={posts} 
+                  setPosts={setPosts} 
+                  selectedSort={selectedSort} 
+                  setSelectedSort={setSelectedSort} 
+                  searchQuery={searchQuery} 
+                  setSearchQuery={setSearchQuery}
+                  />
+      {/* <div className="gorizont">
         <Sort posts={posts} 
               setPosts={setPosts} 
               selectedSort={selectedSort} 
               setSelectedSort={setSelectedSort} 
               />
         <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
-      </div>
+      </div> */}
       {
         sortedAndSearchedPost.length
         ?  <PostList posts={sortedAndSearchedPost} title='List of posts' setPosts={setPosts}/>
