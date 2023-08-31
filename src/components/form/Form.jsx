@@ -3,7 +3,7 @@ import MyButton from '../UI/button/MyButton'
 import MyInput from '../UI/input/MyInput'
 import styles from './Form.module.css'
 
-const Form = ({posts, setPosts}) => {
+const Form = ({posts, setPosts, setModal}) => {
   // const [title, setTitle] = React.useState('')
   // const [body, setBody] = React.useState('')
   const [post, setPost] = React.useState({title:'', body:''})
@@ -19,6 +19,7 @@ const Form = ({posts, setPosts}) => {
     if (newPost.title.trim() !== '' && newPost.body.trim() !== ''){
       setPosts([...posts, newPost])
       setPost({title:'', body:''})
+      setModal(false)
     }
   }
 

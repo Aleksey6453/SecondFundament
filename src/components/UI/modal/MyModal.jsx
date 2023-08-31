@@ -11,8 +11,8 @@ const MyModal = ({children, visible, setVisible }) => {
   return (
     <div className={rootStyles.join(' ')} onClick={()=>setVisible(false)}>
       <div className={styles.myModalContent} onClick={(e)=>e.stopPropagation()}>
-            {children}
-      </div>
+        {children}
+      </div>  
     </div>
   )
 }

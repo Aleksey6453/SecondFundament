@@ -34,19 +34,24 @@ function App() {
   }, [filter.sort, posts])
 
  
-
   const sortedAndSearchedPost = React.useMemo(()=>{
       return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.query.toLowerCase()))
   }, [filter.query, sortedPosts])
 
+  const [modal, setModal] = React.useState(false)
+
   return (
     <div className="App globalWrap">
-
-      <Form posts={posts} setPosts={setPosts} />
+      <MyButton onClick={() => setModal(true) }>
+        Show modal
+      </MyButton>
+      <MyModal visible={modal} setVisible={setModal}>
+        <Form posts={posts} setPosts={setPosts} setModal={setModal}/>
+      </MyModal>
+    
       <PostFilter filter={filter}
                   setFilter={setFilter}
                   />
-     
       {
         sortedAndSearchedPost.length
         ?  <PostList posts={sortedAndSearchedPost} title='List of posts' setPosts={setPosts}/>
