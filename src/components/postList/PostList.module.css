@@ -1,9 +1,12 @@
 .postList{
-    width: 70%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
     /* padding: 20px 0; */
+}
+.wrapTransitionGroup{
+  width: 60%;
 }

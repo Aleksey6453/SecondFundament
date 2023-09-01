@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './PostList.module.css'
 import { Post } from '../post/Post'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 const PostList = ({posts, title, setPosts}) => {
 
@@ -16,17 +17,26 @@ const PostList = ({posts, title, setPosts}) => {
   return (
     <div className={styles.postList}>
       <h1>{title}</h1>
-      {
-        posts.map((post, index) =>
-          <Post number={index + 1} 
-                post={post} 
-                key={post.id} 
-                posts={posts} 
-                setPosts={setPosts} 
-                onDelete={deletePost}
-                />
-        )
-      }
+      <TransitionGroup className={styles.wrapTransitionGroup}>
+        {
+          posts.map((post, index) =>
+          <CSSTransition
+              key={post.id}
+              timeout={500}
+              classNames="post"
+            >
+            <Post number={index + 1} 
+                  post={post} 
+                  // key={post.id} 
+                  posts={posts} 
+                  setPosts={setPosts} 
+                  onDelete={deletePost}
+                  />
+          </CSSTransition>
+          )
+        }
+      </TransitionGroup>
+     
     </div>
   )
 }
