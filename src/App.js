@@ -43,9 +43,13 @@ function App() {
 
   const [modal, setModal] = React.useState(false)
 
+  React.useEffect(() => {
+    console.log('useEffectoooo')
+  }, [posts])
+
   const fetchPosts = async () => {
     const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
-    console.log(response.data)
+    setPosts(response.data)
   }
 
   return (
