@@ -14,6 +14,8 @@ import { Sort } from './components/sort/Sort';
 import PostFilter from './components/postFilter/PostFilter';
 import { usePosts } from './hooks/usePosts'
 import axios from 'axios';
+import PostService from './API/PostService';
+import Loader from './components/UI/loader/Loader';
 
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
   // const [selectedSort, setSelectedSort] = React.useState('')
   // const [searchQuery, setSearchQuery] = React.useState('')
   const [filter, setFilter] = React.useState({sort: '', query: ''})
+ 
   const sortedAndSearchedPost = usePosts(posts, filter.sort, filter.query)
   
   // const sortedPosts = React.useMemo(()=>{
@@ -42,15 +45,21 @@ function App() {
   // }, [filter.query, sortedPosts])
 
   const [modal, setModal] = React.useState(false)
+  const [isPostsLoading, setIsPostsLoading] = React.useState(false)
+
+  const fetchPosts = () => {
+    setIsPostsLoading(true)
+    setTimeout( async () => {
+      const posts = await PostService.getAll()
+      setPosts(posts)
+      setIsPostsLoading(false)
+    }, 1000);
+    
+  }
 
   React.useEffect(() => {
-    console.log('useEffectoooo')
-  }, [posts])
-
-  const fetchPosts = async () => {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
-    setPosts(response.data)
-  }
+    fetchPosts()
+  }, [])
 
   return (
     <div className="App globalWrap">
@@ -70,11 +79,18 @@ function App() {
       <PostFilter filter={filter}
                   setFilter={setFilter}
                   />
-      {
+
+      {isPostsLoading
+            ?  <div> <Loader /> 
+                    <h1> Loading... </h1> 
+               </div>
+            :  <PostList posts={sortedAndSearchedPost} title='List of posts' setPosts={setPosts}/> 
+      }            
+      {/* {
         sortedAndSearchedPost.length
         ?  <PostList posts={sortedAndSearchedPost} title='List of posts' setPosts={setPosts}/>
         :  <h1>There is empty!</h1>
-      }
+      } */}
       
     </div>
   );
