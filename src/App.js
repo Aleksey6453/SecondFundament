@@ -12,6 +12,7 @@ import { MyModal } from './components/UI/modal/MyModal';
 import MyButton from './components/UI/button/MyButton';
 import { Sort } from './components/sort/Sort';
 import PostFilter from './components/postFilter/PostFilter';
+import { usePosts } from './hooks/usePosts'
 
 
 function App() {
@@ -24,19 +25,20 @@ function App() {
   // const [selectedSort, setSelectedSort] = React.useState('')
   // const [searchQuery, setSearchQuery] = React.useState('')
   const [filter, setFilter] = React.useState({sort: '', query: ''})
+  const sortedAndSearchedPost = usePosts(posts, filter.sort, filter.query)
   
-  const sortedPosts = React.useMemo(()=>{
-      console.log('get sorteg post havened')
-      if (filter.sort){
-        return [...posts].sort((a,b) => a[filter.sort].localeCompare(b[filter.sort]))
-      }
-      return posts
-  }, [filter.sort, posts])
+  // const sortedPosts = React.useMemo(()=>{
+  //     console.log('get sorteg post havened')
+  //     if (filter.sort){
+  //       return [...posts].sort((a,b) => a[filter.sort].localeCompare(b[filter.sort]))
+  //     }
+  //     return posts
+  // }, [filter.sort, posts])
 
  
-  const sortedAndSearchedPost = React.useMemo(()=>{
-      return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.query.toLowerCase()))
-  }, [filter.query, sortedPosts])
+  // const sortedAndSearchedPost = React.useMemo(()=>{
+  //     return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.query.toLowerCase()))
+  // }, [filter.query, sortedPosts])
 
   const [modal, setModal] = React.useState(false)
 
