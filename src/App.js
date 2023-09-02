@@ -13,6 +13,7 @@ import MyButton from './components/UI/button/MyButton';
 import { Sort } from './components/sort/Sort';
 import PostFilter from './components/postFilter/PostFilter';
 import { usePosts } from './hooks/usePosts'
+import axios from 'axios';
 
 
 function App() {
@@ -42,11 +43,22 @@ function App() {
 
   const [modal, setModal] = React.useState(false)
 
+  const fetchPosts = async () => {
+    const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+    console.log(response.data)
+  }
+
   return (
     <div className="App globalWrap">
-      <MyButton onClick={() => setModal(true) }>
-        Show modal
-      </MyButton>
+      <div className="gorizont">
+        <MyButton onClick={() => setModal(true) }>
+          Show modal
+        </MyButton>
+        <MyButton onClick={fetchPosts}>
+          Get post
+        </MyButton>
+      </div>
+      
       <MyModal visible={modal} setVisible={setModal}>
         <Form posts={posts} setPosts={setPosts} setModal={setModal}/>
       </MyModal>
