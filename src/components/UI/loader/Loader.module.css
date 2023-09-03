@@ -2,15 +2,34 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 7px dashed lime;
+    border: 10px dashed lime;
     animation: rotate 1s infinite linear;
+    display: flex;
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+.loadingWords {
+  transition: all 2s;
+  cursor: pointer;
+}  
+.loadingWords:hover{
+    letter-spacing: 50px;
+    font-size: 35px;
+    color: white
 }
 
 @keyframes rotate{
     from {
-        transform: rotate(0deg);
+        transform: rotate(0deg) scale(1);
     }
     to {
-        transform: rotate(360deg);
+        transform: rotate(360deg) scale(.5);
     }
 }
+

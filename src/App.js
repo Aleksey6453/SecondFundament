@@ -81,9 +81,7 @@ function App() {
                   />
 
       {isPostsLoading
-            ?  <div> <Loader /> 
-                    <h1> Loading... </h1> 
-               </div>
+            ?  <Loader /> 
             :  <PostList posts={sortedAndSearchedPost} title='List of posts' setPosts={setPosts}/> 
       }            
       {/* {
