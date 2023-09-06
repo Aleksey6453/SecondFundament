@@ -46,9 +46,14 @@ function App() {
   // }, [filter.query, sortedPosts])
 
   const [modal, setModal] = React.useState(false)
+  const [totalCount, setTotalCount] = React.useState(0)
+  const [limit, setLimit] = React.useState(10)
+  const [page, setPage] = React.useState(1)
   const [fetchPosts, isPostsLoading, postError] = useFetching(async()=>{
-      const posts = await PostService.getAll()
-      setPosts(posts)
+      const response = await PostService.getAll(limit, page)
+      setPosts(response.data)
+      console.log(response.headers['x-total-count'])
+      setTotalCount(response.headers['x-total-count'])
   })
 
   // const fetchPosts = () => {
@@ -83,7 +88,9 @@ function App() {
       <PostFilter filter={filter}
                   setFilter={setFilter}
                   />
-
+      {postError &&
+            <h1>This is Error!</h1>
+      }
       {isPostsLoading
             ?  <Loader /> 
             :  <PostList posts={sortedAndSearchedPost} title='List of posts' setPosts={setPosts}/> 
