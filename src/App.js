@@ -17,7 +17,8 @@ import axios from 'axios';
 import PostService from './API/PostService';
 import Loader from './components/UI/loader/Loader';
 import { useFetching } from './hooks/useFetching';
-import { getPageCount } from './utils/pages'
+import { getPageCount, getPagesArray } from './utils/pages'
+
 
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
   })
 
   console.log(totalPages)
+  let pagesArray = getPagesArray(totalPages)
 
   // const fetchPosts = () => {
   //   setIsPostsLoading(true)
@@ -104,6 +106,13 @@ function App() {
         ?  <PostList posts={sortedAndSearchedPost} title='List of posts' setPosts={setPosts}/>
         :  <h1>There is empty!</h1>
       } */}
+      <div>
+        { pagesArray.map(p => 
+            <MyButton>{p}</MyButton>
+        )}
+      </div>
+      
+      
       
     </div>
   );
