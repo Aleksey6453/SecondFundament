@@ -17,6 +17,7 @@ import axios from 'axios';
 import PostService from './API/PostService';
 import Loader from './components/UI/loader/Loader';
 import { useFetching } from './hooks/useFetching';
+import { getPageCount } from './utils/pages'
 
 
 function App() {
@@ -46,15 +47,17 @@ function App() {
   // }, [filter.query, sortedPosts])
 
   const [modal, setModal] = React.useState(false)
-  const [totalCount, setTotalCount] = React.useState(0)
+  const [totalPages, setTotalPages] = React.useState(0)
   const [limit, setLimit] = React.useState(10)
   const [page, setPage] = React.useState(1)
   const [fetchPosts, isPostsLoading, postError] = useFetching(async()=>{
       const response = await PostService.getAll(limit, page)
       setPosts(response.data)
-      console.log(response.headers['x-total-count'])
-      setTotalCount(response.headers['x-total-count'])
+      const totalCount = response.headers['x-total-count']
+      setTotalPages(getPageCount(totalCount, limit))
   })
+
+  console.log(totalPages)
 
   // const fetchPosts = () => {
   //   setIsPostsLoading(true)
@@ -88,8 +91,9 @@ function App() {
       <PostFilter filter={filter}
                   setFilter={setFilter}
                   />
+
       {postError &&
-            <h1>This is Error!</h1>
+            <h1>This is Error! ${postError}</h1>
       }
       {isPostsLoading
             ?  <Loader /> 
