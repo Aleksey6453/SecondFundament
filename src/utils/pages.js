@@ -4,10 +4,9 @@
 
 export const getPagesArray = (totalPages) => {
     let resultArray = []
-    for(let i=0; totalPages < i; i++){
+    for(let i=0; i < totalPages; i++){
         resultArray.push(i + 1)
     }
-    console.log([resultArray])
     return resultArray
 }
 

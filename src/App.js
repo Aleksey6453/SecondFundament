@@ -51,7 +51,7 @@ function App() {
   const [totalPages, setTotalPages] = React.useState(0)
   const [limit, setLimit] = React.useState(10)
   const [page, setPage] = React.useState(1)
-  const [fetchPosts, isPostsLoading, postError] = useFetching(async()=>{
+  const [fetchPosts, isPostsLoading, postError] = useFetching(async() => {
       const response = await PostService.getAll(limit, page)
       setPosts(response.data)
       const totalCount = response.headers['x-total-count']
@@ -59,6 +59,7 @@ function App() {
   })
 
   console.log(totalPages)
+  
   let pagesArray = getPagesArray(totalPages)
 
   // const fetchPosts = () => {
@@ -106,7 +107,7 @@ function App() {
         ?  <PostList posts={sortedAndSearchedPost} title='List of posts' setPosts={setPosts}/>
         :  <h1>There is empty!</h1>
       } */}
-      <div>
+      <div className='paginationsBlockButtons'>
         { pagesArray.map(p => 
             <MyButton>{p}</MyButton>
         )}
