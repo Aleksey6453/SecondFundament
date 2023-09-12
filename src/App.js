@@ -18,6 +18,7 @@ import PostService from './API/PostService';
 import Loader from './components/UI/loader/Loader';
 import { useFetching } from './hooks/useFetching';
 import { getPageCount, getPagesArray } from './utils/pages'
+import { PaginationBlock } from './components/paginationBlock/PaginationBlock';
 
 
 
@@ -107,11 +108,7 @@ function App() {
         ?  <PostList posts={sortedAndSearchedPost} title='List of posts' setPosts={setPosts}/>
         :  <h1>There is empty!</h1>
       } */}
-      <div className='paginationsBlockButtons'>
-        { pagesArray.map(p => 
-            <MyButton>{p}</MyButton>
-        )}
-      </div>
+      <PaginationBlock pagesArray={pagesArray}/>
       
       
       
