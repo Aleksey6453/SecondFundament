@@ -9,7 +9,7 @@
     margin-top: 30px;
   }
 
-  .btn {
+  .btnPag {
     box-sizing: border-box;
     appearance: none;
     background-color: white;
@@ -19,7 +19,7 @@
     display: flex;
     align-self: center;
     font-size: 16px;
-    padding: 15px 40px;
+    padding: 15px;
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
@@ -44,9 +44,24 @@
     border-radius: 15px;
   }
 
-  .btn__current {
+  .btnPagCurrent {
+    box-sizing: border-box;
+    appearance: none;
+    border: 3px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: Century Gothic;
+    font-weight: 700;
+    transition: all 1s;
+    margin: 10px;
     color: black;
     background-color: aqua;
-    padding: 20px 45px;
+    padding: 20px;
     font-weight: bold;
   }

@@ -10,7 +10,7 @@ const Post = ({post, number, onDelete}) => {
   return (
     <div className={styles.postCart}>
       <div className={styles.left}>
-        <b className={styles.postCartTitle}>{number}. {titleUpper}</b>
+        <b className={styles.postCartTitle}>{post.id}. {titleUpper}</b>
         <p className={styles.postCartText}>{bodyUpper}</p>
       </div>
       <MyButton onClick={()=>onDelete(post.id)}>Delete</MyButton>
