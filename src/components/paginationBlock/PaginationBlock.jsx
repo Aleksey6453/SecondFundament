@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './PaginationBlock.module.css'
 
-const PaginationBlock = ({pagesArray, page, setPage }) => {
+const PaginationBlock =  ({pagesArray, page, setPage }) => {
     const changePage = (page) => {
         setPage(page)
     }

@@ -28,3 +28,10 @@
     justify-content: center;
     width: 70%;
   }
+
+  .btnBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
