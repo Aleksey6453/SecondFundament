@@ -22,13 +22,15 @@ const PostIdPage = () => {
         fetchPostById(params.id)
         fetchComments(params.id)
     }, [])
+
+
   return (
     <div className='globalWrap'>
        <h1>This is page of post {params.id}! <br />
        You are find it!</h1>
        {isLoading 
                 ? <Loader />
-                : <div><h1>{post.id}. {post.title}</h1></div>
+                : <div><p className='bigTitle'>{post.id}. {post.title}</p></div>
        }
        <h2>Comments</h2>
        {isComLoading 
