@@ -13,6 +13,9 @@ const Post = ({post, number, onDelete}) => {
   const handleMore = () => {
      navigate(`/posts/${post.id}`)
   } 
+  const editPost = () => {
+     navigate(`/posts/${post.id}/edit`)
+  }
 
   return (
     <div className={styles.postCart}>
@@ -23,6 +26,7 @@ const Post = ({post, number, onDelete}) => {
       <div className={styles.btnBlock}>
         <MyButton onClick={()=>onDelete(post.id)}>Delete</MyButton>
         <MyButton onClick={ handleMore }>More</MyButton>
+        <MyButton onClick={ editPost }>Edit</MyButton>
       </div>
     </div>
   )

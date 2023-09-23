@@ -5,7 +5,9 @@ import { Posts } from '../pages/Posts';
 import { Error } from '../pages/Error';
 import { PostIdPage } from '../pages/PostIdPage';
 import { Home } from '../pages/Home';
+import { New } from '../pages/New';
 import { Layout } from '../components/Layout';
+import { EditPost } from '../pages/EditPost'
 
 
 const AppRouter = () => {
@@ -16,6 +18,9 @@ const AppRouter = () => {
           <Route path='about' element={<About />}/>
           <Route path='posts' element={<Posts />}/>
           <Route path='posts/:id' element={<PostIdPage />}/>
+          <Route path='posts/:id/edit' element={<EditPost />}/>
+          <Route path='posts/new' element={<New />}/>
+          <Route path='new' element={<New />}/>
           <Route path='*' element={<Error />}/>
         </Route>
     </Routes>
