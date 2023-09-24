@@ -1,8 +1,9 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import PostService from '../API/PostService'
 import Loader from '../components/UI/loader/Loader'
 import { useFetching } from '../hooks/useFetching'
+
 
 const PostIdPage = () => {
     const params = useParams()
