@@ -1,7 +1,7 @@
 import React from 'react'
 import MyButton from '../UI/button/MyButton'
 import styles from './Post.module.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Post = ({post, number, onDelete}) => {
 
@@ -14,7 +14,8 @@ const Post = ({post, number, onDelete}) => {
      navigate(`/posts/${post.id}`)
   } 
   const editPost = () => {
-     navigate(`/posts/${post.id}/edit`)
+    //  navigate(`/posts/${post.id}/edit`)
+    navigate('/posts/new')
   }
 
   return (
