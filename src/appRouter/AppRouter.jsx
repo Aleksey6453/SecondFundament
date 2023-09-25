@@ -26,7 +26,7 @@ const AppRouter = () => {
           <Route path='posts/:id/edit' element={<EditPost />}/>
           <Route path='posts/new' element={
             <RequireAuth>
-              <New />
+              <EditPost />
             </RequireAuth>
           }/>
           <Route path='login' element={<LoginPage />}/>
