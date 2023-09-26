@@ -11,6 +11,7 @@ const Navigation = () => {
           <NavLink className={styles.link} style={({isActive})=>({color: isActive ? 'white' : '#611A8B'})} to="/">Home</NavLink>
           <NavLink className={styles.link} style={({isActive})=>({color: isActive ? 'white' : '#611A8B'})} to="/about">About</NavLink>
           <NavLink className={styles.link} style={({isActive})=>({color: isActive ? 'white' : '#611A8B'})} to="/posts">Posts</NavLink>
+          <NavLink className={styles.link} style={({isActive})=>({color: isActive ? 'white' : '#611A8B'})} to="/blog">Blog</NavLink>
       </div>
       <div className="blockGoBack">
         <button onClick={goBack} className='goBack'>Go back...</button>
