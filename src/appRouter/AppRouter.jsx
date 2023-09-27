@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/LoginPage'
 import { RequireAuth } from '../hoc/RequireAuth';
 import { AuthProvider } from '../hoc/AuthProvider';
 import { BlogPage } from '../pages/BlogPage';
+import { BlogPageNew } from '../pages/BlogPageNew';
 
 
 const AppRouter = () => {
@@ -23,6 +24,7 @@ const AppRouter = () => {
           <Route path='about' element={<About />}/>
           <Route path='about-us' element={<Navigate to='/about' replace />}/>
           <Route path='blog' element={<BlogPage />}/>
+          <Route path='blog/test' element={<BlogPageNew />}/>
           <Route path='posts' element={<Posts />}/>
           <Route path='posts/:id' element={<PostIdPage />}/>
           <Route path='posts/:id/edit' element={<EditPost />}/>
