@@ -13,6 +13,7 @@ import { RequireAuth } from '../hoc/RequireAuth';
 import { AuthProvider } from '../hoc/AuthProvider';
 import { BlogPage } from '../pages/BlogPage';
 import { BlogPageNew } from '../pages/BlogPageNew';
+import { NewProject } from '../newProject/NewProject';
 
 
 const AppRouter = () => {
@@ -34,6 +35,7 @@ const AppRouter = () => {
             </RequireAuth>
           }/>
           <Route path='login' element={<LoginPage />}/>
+          <Route path='new' element={<NewProject />}/>
           <Route path='*' element={<Error />}/>
         </Route>
       </Routes>
