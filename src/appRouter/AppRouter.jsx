@@ -14,6 +14,7 @@ import { AuthProvider } from '../hoc/AuthProvider';
 import { BlogPage } from '../pages/BlogPage';
 import { BlogPageNew } from '../pages/BlogPageNew';
 import { NewProject } from '../newProject/NewProject';
+import { Game } from '../newProject/Game';
 
 
 const AppRouter = () => {
@@ -36,6 +37,7 @@ const AppRouter = () => {
           }/>
           <Route path='login' element={<LoginPage />}/>
           <Route path='new' element={<NewProject />}/>
+          <Route path='game' element={<Game />}/>
           <Route path='*' element={<Error />}/>
         </Route>
       </Routes>

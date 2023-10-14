@@ -13,6 +13,7 @@ const Navigation = () => {
           <NavLink className={styles.link} style={({isActive})=>({color: isActive ? 'white' : '#611A8B'})} to="/posts">Posts</NavLink>
           <NavLink className={styles.link} style={({isActive})=>({color: isActive ? 'white' : '#611A8B'})} to="/blog">Blog</NavLink>
           <NavLink className={styles.link} style={({isActive})=>({color: isActive ? 'white' : '#611A8B'})} to="/new">New</NavLink>
+          <NavLink className={styles.link} style={({isActive})=>({color: isActive ? 'white' : '#611A8B'})} to="/game">Game</NavLink>
       </div>
       <div className="blockGoBack">
         <button onClick={goBack} className='goBack'>Go back...</button>
