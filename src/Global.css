@@ -138,6 +138,30 @@
   box-sizing: border-box;
 }
 
+.cell{
+  width: 30%;
+  height: 30%;
+  padding: 25px;
+}
+
+.cellWin{
+  width: 30%;
+  height: 30%;
+  padding: 25px;
+  background-color: lime;
+}
+.symbol{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.symbolX {
+  color: red;
+}
+.symbolO{
+  color: blue;
+}
+
 
 
 

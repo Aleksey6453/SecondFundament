@@ -5,13 +5,8 @@
     font-weight: bold;
 }
 
-.btn{
-    width: 30%;
-    height: 30%;
-    padding: 25px;
-}
-
 .gameField{
     width: 300px;
     height: 300px;
+
 }
