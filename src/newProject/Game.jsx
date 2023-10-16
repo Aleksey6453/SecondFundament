@@ -5,14 +5,27 @@ const symbolX = 'X'
 const symbolO = 'O'
 
 const Game = () => {
-    const cells = [symbolX, null, null, symbolO, null, null, symbolO, symbolX, null]
-    const currentStep = symbolX;
+   
+    const [cells, setCells] = React.useState([null, null, null, null, null, null, null, null, null])
+    const [currentStep, setCurrentStep] = React.useState(symbolX)
+    // const currentStep = symbolX;
     const getSymbolClassName = (symbol) => {
         if(symbol === symbolX) return 'symbolX'
         if(symbol === symbolO) return 'symbolO'
         return ''
     }
     const renderSymbol = (symbol) => <span className={`symbol ${getSymbolClassName(symbol)}`}> {symbol} </span>
+    const handleCellClick = (index) => {
+        console.log(index+1)
+        if(cells[index]){
+            return
+        }
+        const cellsCopy = cells.slice()
+        cellsCopy[index] = currentStep;
+        setCells(cellsCopy)
+        setCurrentStep(currentStep === symbolX ? symbolO : symbolX)
+    }
+    
 
   return (
     <div className='game'>
@@ -22,7 +35,7 @@ const Game = () => {
         <div className={styles.gameField}>
             {cells.map((symbol, index) => {
                 return(
-                    <button key={index} className='cell cellWin'>
+                    <button key={index} onClick={()=>handleCellClick(index)} className='cell cellWin'>
                         {symbol ? renderSymbol(symbol) : null} 
                     </button>
                 )
