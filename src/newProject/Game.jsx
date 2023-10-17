@@ -61,26 +61,16 @@ const Game = () => {
         </div>
         <div className={styles.gameField}>
             {cells.map((symbol, index) => {
+                const isWinner = winnerCombi?.includes(index)
                 return(
                     <button key={index} 
                             onClick={()=>handleCellClick(index)} 
-                            className='cell cellWin'
+                            className={`cell ${isWinner ? `cellWin` : ''}`}
                             >
                                 {symbol ? renderSymbol(symbol) : null} 
                     </button>
                 )
             })}
-            {/* <button className='cell cellWin'><span>x</span></button>
-            <button className='cell '>0</button>
-            <button className='cell '></button>
-            <button className='cell cellWin'>x</button>
-            <button className='cell '></button>
-            <button className='cell '>0</button>
-            <button className='cell cellWin'>x</button>
-            <button className='cell '></button>
-            <button className='cell '></button> */}
-          
-
         </div>
       
     </div>
