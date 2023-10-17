@@ -39,9 +39,12 @@ const Game = () => {
         return ''
     }
     const renderSymbol = (symbol) => <span className={`symbol ${getSymbolClassName(symbol)}`}> {symbol} </span>
+
+    const winnerSymbol = winnerCombi ? cells[winnerCombi[0]] : undefined;
+    console.log(cells)
     const handleCellClick = (index) => {
         console.log(index+1)
-        if(cells[index]){
+        if(cells[index] || winnerCombi) {
             return
         }
         const cellsCopy = cells.slice()
@@ -57,7 +60,7 @@ const Game = () => {
   return (
     <div className='game'>
         <div className='gameInfo'>
-            <h1>Step '{renderSymbol(currentStep)}' </h1>
+            <h1>{winnerCombi ? 'WINNER!' : 'Step'}'{renderSymbol(winnerSymbol ?? currentStep)}' </h1>
         </div>
         <div className={styles.gameField}>
             {cells.map((symbol, index) => {
