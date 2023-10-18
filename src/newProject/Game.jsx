@@ -28,8 +28,9 @@ const computeWinner = (cells) => {
 }
 
 const Game = () => {
-   
-    const [cells, setCells] = React.useState([null, null, null, null, null, null, null, null, null])
+    const startPosition = Array(9).fill(null)
+    // const [cells, setCells] = React.useState([null, null, null, null, null, null, null, null, null])
+    const [cells, setCells] = React.useState(startPosition)
     const [currentStep, setCurrentStep] = React.useState(symbolX)
     const [winnerCombi, setWinnerCombi] = React.useState()
     // const currentStep = symbolX;
@@ -55,6 +56,9 @@ const Game = () => {
         setCurrentStep(currentStep === symbolX ? symbolO : symbolX)
         setWinnerCombi(winner)
     }
+    const handleReebot = () => {
+        setCells(startPosition)
+    }
     
 
   return (
@@ -73,9 +77,9 @@ const Game = () => {
                                 {symbol ? renderSymbol(symbol) : null} 
                     </button>
                 )
-            })}
+            })}  
         </div>
-      
+        <button onClick={handleReebot}>Reebot</button> 
     </div>
   )
 }
