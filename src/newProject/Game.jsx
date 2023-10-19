@@ -39,9 +39,23 @@ const Game = () => {
         if(symbol === symbolO) return 'symbolO'
         return ''
     }
+    // const draw = () => {
+    //     cells.every(cell => cell !== null)  
+    // }
+
+    // const handleDraw = () => {
+    //     draw() ? alert('Draw') : console.log('')
+    //     console.log('Work func')
+    //     if(cells.every(cell => cell !== null)){
+    //         console.log('Draw!!!');
+    //         return
+    //     }
+    // }
     const renderSymbol = (symbol) => <span className={`symbol ${getSymbolClassName(symbol)}`}> {symbol} </span>
 
     const winnerSymbol = winnerCombi ? cells[winnerCombi[0]] : undefined;
+    const isDraw = !winnerCombi && cells.filter(value => value).length === 9
+
     console.log(cells)
     const handleCellClick = (index) => {
         console.log(index+1)
@@ -55,16 +69,24 @@ const Game = () => {
         setCells(cellsCopy)
         setCurrentStep(currentStep === symbolX ? symbolO : symbolX)
         setWinnerCombi(winner)
+        // handleDraw()
+        // draw() ? alert('Draw') : console.log('')
     }
     const handleReebot = () => {
         setCells(startPosition)
+        setCurrentStep(symbolX)
+        // setWinnerCombi(undefined)
     }
+
     
 
   return (
     <div className='game'>
         <div className='gameInfo'>
-            <h1>{winnerCombi ? 'WINNER!' : 'Step'}'{renderSymbol(winnerSymbol ?? currentStep)}' </h1>
+            {/* <h1>{winnerCombi ? 'WINNER!' : 'Step'}'{renderSymbol(winnerSymbol ?? currentStep)}' </h1> */}
+            {/* <h1>{(handleDraw() ? 'Not win!' : '')}</h1> */}
+            {isDraw ? 'Is Draw' : winnerCombi ? 'Winner: ' : 'Step: '}
+            {!isDraw && renderSymbol(winnerSymbol ?? currentStep)}
         </div>
         <div className={styles.gameField}>
             {cells.map((symbol, index) => {
@@ -79,7 +101,8 @@ const Game = () => {
                 )
             })}  
         </div>
-        <button onClick={handleReebot}>Reebot</button> 
+        <button onClick={handleReebot}>Reebot</button>
+        {/* <button onClick={handleDraw}>Draw</button>  */}
     </div>
   )
 }
